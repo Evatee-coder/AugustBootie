@@ -1,0 +1,15 @@
+
+# Terraform
+**/.terraform/*
+**/.terraform.lock.hcl
+*.tfstate
+*.tfstate.*
+
+# Large installation files
+**/awscliv2.zip
+*.zip
+*.tar.gz
+*.dmg
+
+# Provider binaries
+terraform-provider-*
