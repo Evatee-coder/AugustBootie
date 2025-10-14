@@ -33,6 +33,7 @@ jobs:
 # ctrl + [ ---> towards left
 # ctrl + ] ---> towards right
   terraform-dev:
+    needs: [terraform-fmt]
     runs-on: ubuntu-latest
     steps:
     - name: checkout
