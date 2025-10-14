@@ -1,0 +1,71 @@
+name: terraform dev
+on:
+  push:
+    branches:
+      - main
+
+  # for manual run
+  workflow_dispatch:
+
+env:
+  terraform_version: 1.13.3
+  infra_path: class10
+  # infra_path: class8
+
+jobs: 
+  terraform-fmt:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout code
+        uses: actions/checkout@v4
+
+      - name: Terraform install
+        uses: hashicorp/setup-terraform@v3
+        with:
+            terraform_version: ${{ env.terraform_version }}
+
+      - name: Terraform fmt
+        run: |
+          cd ${{env.infra_path}} 
+          terraform fmt -check
+
+# to move codes towards left and right
+# ctrl + [ ---> towards left
+# ctrl + ] ---> towards right
+  terraform-dev:
+    runs-on: ubuntu-latest
+    steps:
+    - name: checkout
+      uses: actions/checkout@v4
+
+    - name: Terraform install
+      uses: hashicorp/setup-terraform@v3
+      with:
+        terraform_version: ${{ env.terraform_version }}
+
+    - name: Configure AWS Credentials
+      uses: aws-actions/configure-aws-credentials@v5
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: us-east-1
+        
+
+    - name: Terraform init
+      run: |
+        cd ${{env.infra_path}} 
+        terraform init -backend-config=vars/dev.tfbackend 
+      #run: terraform init 
+
+    - name: Terraform plan
+      run: |
+        cd ${{env.infra_path}} 
+        terraform plan -var-file=vars/dev.tfvars
+      #run: terraform plan -auto-approve
+
+
+
+    # download the code to run
+    #install terraform
+    # terraform init
+    # terraform plan
