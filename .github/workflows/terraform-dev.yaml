@@ -9,7 +9,7 @@ on:
 
 env:
   terraform_version: 1.13.3
-  infra_path: class10
+  infra_path: class10/Terraform-advanced
   # infra_path: class8
 
 jobs: 
