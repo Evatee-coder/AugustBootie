@@ -1,8 +1,10 @@
-name: terraform-dev-class12
+name: terraform dev class12
 on:
-  pull_request:
-    branches:
-      - main
+  # pull_request:
+  #   branches:
+  #     - main
+
+  workflow_dispatch:
 
 
 env:
