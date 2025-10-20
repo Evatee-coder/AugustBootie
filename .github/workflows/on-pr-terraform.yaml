@@ -36,7 +36,7 @@ jobs:
       - name: Terraform Init
         run: |
           cd ${{env.infra_path}}
-          terraform init
+          terraform init -backend-config=vars/dev.tfbackend -input=false
 
       - name: Terraform fmt
         run: |
