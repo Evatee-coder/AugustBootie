@@ -17,6 +17,9 @@ data "aws_kms_key" "rds_kms" {
 #to use the aws_kms_key copy below
 #data.aws_kms_key.rds_kms.arn
 
+
+
+
 # iF i want the region
 data "aws_region" "current" {}
 #data.aws_region.current.name
