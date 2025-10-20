@@ -5,9 +5,13 @@ on:
       - main
     paths:
       - 'class10/Terraform-advanced/**'
+<<<<<<< HEAD
 
 
 
+=======
+     
+>>>>>>> 29a494fc71e5c5534c76314f41f77eb0e81a40f4
 env:
   terraform_version: 1.13.3
   infra_path: class10/Terraform-advanced
