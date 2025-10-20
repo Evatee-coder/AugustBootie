@@ -57,7 +57,7 @@ jobs:
         run: |
           terraform init -input=false \
             -backend-config="bucket=state-bucket-216989097838" \
-            -backend-config="key=AugustBootie-class12/dev/terraform.tfstate" \
+            -backend-config="key=AugustBootie/dev/terraform.tfstate" \
             -backend-config="region=us-east-1" \
             -backend-config="encrypt=true"
         timeout-minutes: 5
