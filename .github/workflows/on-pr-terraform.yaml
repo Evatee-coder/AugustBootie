@@ -33,6 +33,11 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
 
+      - name: Terraform Init
+        run: |
+          cd ${{env.infra_path}}
+          terraform init
+
       - name: Terraform fmt
         run: |
           cd ${{env.infra_path}} 
