@@ -5,7 +5,7 @@ on:
       - main
     paths:
       - 'class10/Terraform-advanced/**'
-      - '.github/workflows/on-pr-terraform.yaml'
+     
 
 
 
