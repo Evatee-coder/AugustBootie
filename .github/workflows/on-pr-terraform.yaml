@@ -33,11 +33,33 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
 
-     
+      - name: Debug - Verify backend config file
+        working-directory: ${{ env.infra_path }}
+        run: |
+          echo "=== Current Directory ==="
+          pwd
+          echo ""
+          echo "=== Listing current directory ==="
+          ls -la
+          echo ""
+          echo "=== Listing vars directory ==="
+          ls -la vars/
+          echo ""
+          echo "=== Content of dev.tfbackend ==="
+          cat vars/dev.tfbackend
+          echo ""
+          echo "=== Checking file exists ==="
+          test -f vars/dev.tfbackend && echo "File EXISTS" || echo "File NOT FOUND"
+
 
       - name: Terraform Init
         working-directory: ${{ env.infra_path }}
-        run: terraform init -backend-config=vars/dev.tfbackend -input=false
+        run: |
+          terraform init -input=false \
+            -backend-config="bucket=state-bucket-216989097838" \
+            -backend-config="key=AugustBootie-class12/dev/terraform.tfstate" \
+            -backend-config="region=us-east-1" \
+            -backend-config="encrypt=true"
         timeout-minutes: 5
 
       - name: Terraform fmt
