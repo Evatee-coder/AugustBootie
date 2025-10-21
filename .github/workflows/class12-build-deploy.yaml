@@ -39,7 +39,7 @@ jobs:
 
       - name: docker build
         run: |
-          cd class6
+          cd class6/may-bootcamp/class3/src
           docker build -t ecsapp .
           docker tag ecsapp ${{ env.ecr_repo }}:${{ env.image_tag }}
 
