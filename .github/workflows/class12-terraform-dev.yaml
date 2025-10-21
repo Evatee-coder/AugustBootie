@@ -1,8 +1,10 @@
 name: terraform dev class12
 on:
-  # pull_request:
-  #   branches:
-  #     - main
+  pull_request:
+    branches:
+      - main
+    paths:
+      - 'class10/Terraform-advanced/**'
 
   workflow_dispatch:
 
@@ -39,5 +41,5 @@ jobs:
     - name: Terraform apply
       run: |
         cd ${{env.infra_path}} 
-        terraform apply -var-file=vars/dev.tfvars
+        terraform apply -var-file=vars/dev.tfvars --auto-approve
       
