@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
 
 env:
-  terraform_version: 1.5.7 
+  terraform_version: 1.13.3 
   infra_path: class10/Terraform-advanced
 
 jobs:
