@@ -10,7 +10,7 @@ on:
 
 env:
   ecr_repo: "216989097838.dkr.ecr.us-east-1.amazonaws.com/student-portal-main-repo"
-  ecs_task_def: "student-portal"
+  ecs_task_def: "dev-studentportal-task-def"
   ecs_cluster: "dev-studentportal-cluster"
   ecs_service: "dev-studentportal-service"
   app_container: "studentportal"
