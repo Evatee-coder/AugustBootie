@@ -57,13 +57,6 @@ resource "aws_ecs_service" "ecs" {
   deployment_maximum_percent = 250 # 
   launch_type                = var.ecs-app-values["launch_type"]
 
-
-deployment_configuration {
-  strategy = BLUE_GREEN
-}
-
-
-
   network_configuration {
     security_groups  = [aws_security_group.ecs_service_sg.id]
     subnets          = [aws_subnet.private-1.id, aws_subnet.private-2.id] #from private subnets created in other file.
